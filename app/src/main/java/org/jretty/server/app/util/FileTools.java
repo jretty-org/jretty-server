@@ -31,6 +31,9 @@ public class FileTools {
     }
 
     public static String getJettyDirPath() {
+        if (__JETTY_DIR == null) {
+            initJettyDir();
+        }
         return __JETTY_DIR.getAbsolutePath();
     }
 

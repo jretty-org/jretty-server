@@ -31,6 +31,7 @@ import org.eclipse.jetty.server.nio.SelectChannelConnector;
 import org.eclipse.jetty.server.ssl.SslSelectChannelConnector;
 import org.eclipse.jetty.server.ssl.SslSocketConnector;
 import org.eclipse.jetty.util.security.Credential;
+import org.jretty.server.app.util.AndroidUtils;
 import org.jretty.server.core.handler.DefaultHandler;
 import org.jretty.server.app.util.AppTools;
 import org.jretty.server.app.util.FileTools;
@@ -112,8 +113,10 @@ public class JrettyServerService extends Service {
                         AppTools.showServiceToast(JrettyServerService.this, R.string.jetty_started);
                         mNM = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
                         // The PendingIntent to launch IJetty activity if the user selects this notification
-                        PendingIntent contentIntent = PendingIntent.getActivity(JrettyServerService.this, 0,
-                                new Intent(JrettyServerService.this, MainActivity.class), 0);
+                        PendingIntent contentIntent = AndroidUtils.getActivity(JrettyServerService.this,
+                                new Intent(JrettyServerService.this, MainActivity.class));
+//                        PendingIntent contentIntent = PendingIntent.getActivity(JrettyServerService.this, 0,
+//                                new Intent(JrettyServerService.this, MainActivity.class), 0);
 
                         CharSequence text = getText(R.string.manage_jetty);
 
